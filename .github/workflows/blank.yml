@@ -23,9 +23,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended latexmk
       
-    - name: Install biblatex package
-      run: sudo apt-get install -y texlive-bibtex-extra
-      
+    - name: Install LaTeX packages
+      run: |
+        sudo apt-get install -y texlive-bibtex-extra texlive-science texlive-lang-english texlive-latex-recommended texlive-fonts-extra texlive-xetex
+
+    - name: Install fontawesome5 package
+      run: |
+        sudo apt-get install -y texlive-fonts-extra
+        
     - name: Compile LaTeX
       run: |
         latexmk -pdf -interaction=nonstopmode ./resume.tex 
