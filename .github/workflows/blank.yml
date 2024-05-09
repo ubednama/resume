@@ -13,28 +13,28 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      with:
-        ref: main
-      
-    - name: Setup LaTeX environment
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended latexmk texlive-bibtex-extra biber
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: main
         
-        # Install additional LaTeX packages if needed
-        sudo apt-get install -y texlive-science texlive-lang-english texlive-fonts-extra texlive-xetex
+      - name: Setup LaTeX environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended latexmk texlive-bibtex-extra biber
+          
+          # Install additional LaTeX packages if needed
+          sudo apt-get install -y texlive-science texlive-lang-english texlive-fonts-extra texlive-xetex
 
-        # Install fontawesome5 package
-        sudo apt-get install -y texlive-fonts-extra
-        
-    - name: Compile LaTeX
-      run: |
-        latexmk -pdf -interaction=nonstopmode -bibtex ./resume.tex 
+          # Install fontawesome5 package
+          sudo apt-get install -y texlive-fonts-extra
+          
+      - name: Compile LaTeX
+        run: |
+          latexmk -pdf -interaction=nonstopmode -bibtex ./resume.tex 
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        deploy_key: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
