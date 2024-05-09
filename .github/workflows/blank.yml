@@ -21,11 +21,11 @@ jobs:
     - name: Setup LaTeX
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: resume.tex  # Replace 'your_cv.tex' with the name of your main LaTeX file
+        root_file: ./resume.tex
 
     - name: Compile LaTeX
       run: |
-        latexmk -pdf -interaction=nonstopmode resume.tex 
+        latexmk -pdf -interaction=nonstopmode ./resume.tex 
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
