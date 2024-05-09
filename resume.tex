@@ -1,0 +1,226 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
+% ATS Compatibility
+% Ensure that generate pdf is machine readable/ATS parsable
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+% \addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Ubedurrehman Khan} \\[7.5pt]
+\href{https://github.com/ubednama}{\raisebox{-0.05\height}\faGithub\ ubednama} \ $|$ \ 
+\href{https://linkedin.com/in/ubed9}{\raisebox{-0.05\height}\faLinkedin\ ubed9} \ $|$ \ 
+\href{https://ubednama.netlify.app/}{\raisebox{-0.05\height}\faGlobe \ ubednama.netlify.app} \ $|$ \ 
+\href{mailto:kubedrn@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ kubedrn@gmail.com} \ $|$ \ 
+\href{tel:+918657567454}{\raisebox{-0.05\height}\faMobile \ +91 ***** *****} \\
+\end{tabularx}
+
+% ---------------------------------------------------------------------------------------
+% %Interests/ Keywords/ Summary
+% ---------------------------------------------------------------------------------------
+\noindent
+\hrulefill \\
+Computer Science Grad with strong proficiency in JavaScript, Python and C++, seeking an entry-level position in a dynamic company to apply my programming expertise and contribute to organizational growth. Eager for opportunities that promote both personal and professional development.
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{\normalsize{Languages:}} & \normalsize{JavaScript, Python, C++, HTML/CSS} \\
+\textbf{\normalsize{Frameworks/Libs:}} & \normalsize{React.js, Node.js, Redux, Bootstrap, Tailwind CSS, Wordpress, REST, MVC} \\
+\textbf{\normalsize{Databases:}} & \normalsize{MySQL, PostgreSQL, MongoDB} \\
+\textbf{\normalsize{Technologies/Tools:}} & \normalsize{AWS, Docker, Git, Linux, VS Code} \\
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Experience
+\section{Work Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Web Developer} \textit{Jennifer Infocom} & \hfill \textit{July 2021 - April 2022} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[-] Developed responsive websites using a combination of technologies including HTML, CSS, JavaScript and WordPress for various devices and screen sizes.
+        \item[-] Customized WordPress themes and plugins to align with client branding and enhance website functionality.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+%Projects
+\section{Projects}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Flight Ticket Management System} \textit{| Node.js, MySQL, AWS} & \hfill \href{https://github.com/ubednama/Flights-Service}{Github}  \\[3pt]
+    \multicolumn{2}{@{}X@{}}{Developed a robust web-based flight ticket management application, proficient in displaying, booking, and managing tickets in real-time. Engineered to sustain high traffic loads with reliability, ensuring uninterrupted service for a large user base.}  \\
+\end{tabularx}
+\vspace{-4pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Pinterest Clone} \textit{| Node.js (Express, Multer), MongoDB} & \hfill \href{https://github.com/ubednama/pinterest-clone}{Github} \\[3pt]
+    \multicolumn{2}{@{}X@{}}{Developed a Pinterest clone using Node.js \& MongoDB, enabling users to securely upload, save, \& view images.}  \\
+\end{tabularx}
+\vspace{-4pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Tic-tac-toe} \textit{| HTML, CSS, JavaScript} & \hfill \href{https://mini-projects-js-git-main-ubednamas-projects.vercel.app}{Link} \textbar{} \href{https://github.com/ubednama/tictactoe-js}{Github} \\[3pt]
+    \multicolumn{2}{@{}X@{}}{Developed interactive Tic Tac Toe game using HTML, JavaScript, and CSS with dynamic grid layout.}  \\
+\end{tabularx}
+\vspace{-4pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Real time Chat App} \textit{| Node.js (Express, Multer), MongoDB} & \hfill \href{https://chat-app-uwfk.onrender.com/}{Link} \textbar{} \href{https://github.com/ubednama/chat-app}{Github} \\[3pt]
+    \multicolumn{2}{@{}X@{}}{Real-time chat application built with React, Node.js, and Socket.io, featuring JWT authentication, MongoDB storage, and state management with React Context and Zustand.}  \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}}	
+\textbf{Bachelor Of Engineering} in Computer Science (\textbf{Mumbai University}) & \hfill \normalsize \textit{Aug 2019 - May 2023} \\
+
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	Achievements
+%----------------------------------------------------------------------------------------
+\section{Achievements}
+    \textbf{Solved 100+ problems} {on Leetcode, CodingNinjas, Hacker Rank}
+
+%----------------------------------------------------------------------------------------
+%	CourseWorkd
+%----------------------------------------------------------------------------------------
+\section{Coursework}
+ {OOPs \textbar{} DSA \textbar{} ML \textbar{} OS \textbar{} Cloud Computing \textbar{} Database Management \textbar{} Big Data Analytics \textbar{} AI \textbar{} NLP}
+
+ %----------------------------------------------------------------------------------------
+%	CourseWorkd
+%----------------------------------------------------------------------------------------
+% \section{Coursework}
+%  {OOPs \textbar{} DSA \textbar{} ML \textbar{} OS \textbar{} Cloud Computing \textbar{} Database Management \textbar{} Big Data Analytics \textbar{} AI \textbar{} NLP}
+
+\vfill
+% \center{\footnotesize Last updated: \today}
+
+\end{document}
