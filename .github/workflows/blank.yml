@@ -18,13 +18,10 @@ jobs:
       with:
         ref: main
       
-    - name: Setup LaTeX
-      uses: xu-cheng/latex-action@v2
-      with:
-        root_file: ./resume.tex
-
     - name: Setup LaTeX environment
-      run: sudo apt-get install texlive texlive-latex-extra texlive-fonts-recommended
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended latexmk
       
     - name: Compile LaTeX
       run: |
