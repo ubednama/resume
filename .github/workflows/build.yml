@@ -1,42 +1,39 @@
-name: LaTeX Build and Deploy
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+name: build_and_deploy
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+    env:
+      DIR: .
+      TEX_FILE: resume.tex
+      HTML_FILE: index.html
+      MAKEFILE: Makefile
     steps:
-      - name: Checkout repository
+      - name: Set up Git repository
         uses: actions/checkout@v2
-        with:
-          ref: main
       
       - name: Setup LaTeX environment
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended latexmk texlive-bibtex-extra biber
-          
-          # Install additional LaTeX packages if needed
           sudo apt-get install -y texlive-science texlive-lang-english texlive-fonts-extra texlive-xetex
-
-          # Install fontawesome5 package
           sudo apt-get install -y texlive-fonts-extra
-          
+      
       - name: Compile LaTeX
         run: |
-          latexmk -pdf -interaction=nonstopmode -bibtex ./resume.tex 
-          
-      - name: Move PDF to deployment directory
+          make -C ${{ env.DIR }}
+      
+      - name: Move PDF and HTML to deployment directory
         run: |
-          mkdir -p deployment_directory
-          mv resume.pdf deployment_directory/
+          mkdir -p github_artifacts
+          mv ${{ env.DIR }}/*.pdf ${{ env.DIR }}/*.html github_artifacts/
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build_artifacts
+          path: github_artifacts
 
   deploy:
     needs: [build]
@@ -44,22 +41,37 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          ref: main
-      
-      - name: Create gh-pages branch if it doesn't exist
-        run: |
-          git show-ref --verify --quiet refs/heads/gh-pages || git checkout --orphan gh-pages
 
-      - name: Move PDF to deployment directory
-        run: |
-          mkdir -p deployment_directory
-          mv resume.pdf deployment_directory/
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build_artifacts
+
+      - name: Create deployment directory
+        run: mkdir -p github_deploy
+      
+      - name: Move artifacts to deployment directory
+        run: mv build_artifacts/* github_deploy/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./deployment_directory
-          publish_branch: gh-pages
-          enable_jekyll: false
+          publish_dir: ./github_deploy
+          publish_branch: build
+          force_orphan: true
+          enable_jekyll: true
+
+  copy_index_to_build:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Copy index.html and Makefile to build branch
+        run: |
+          git checkout -b build
+          git add index.html Makefile
+          git commit -m "Add index.html and Makefile"
+          git push origin build
