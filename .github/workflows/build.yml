@@ -33,8 +33,24 @@ jobs:
         run: |
           latexmk -pdf -interaction=nonstopmode -bibtex ./resume.tex 
 
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      
+      - name: Move PDF to deployment directory
+        run: |
+          mkdir -p deployment_directory
+          mv resume.pdf deployment_directory/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./deployment_directory
+          publish_branch: gh-pages
+          enable_jekyll: false
