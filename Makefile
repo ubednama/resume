@@ -1,10 +1,8 @@
 NAME=resume
 
-all: pdf
-
 pdf: ${NAME}.pdf
 
-${NAME}.pdf: ${NAME}.tex
+all:
 	latexmk -pdf ${NAME}.tex
 
 clean:
