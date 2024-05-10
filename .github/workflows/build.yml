@@ -32,6 +32,11 @@ jobs:
       - name: Compile LaTeX
         run: |
           latexmk -pdf -interaction=nonstopmode -bibtex ./resume.tex 
+          
+      - name: Move PDF to deployment directory
+        run: |
+          mkdir -p deployment_directory
+          mv resume.pdf deployment_directory/
 
   deploy:
     needs: [build]
@@ -42,6 +47,10 @@ jobs:
         with:
           ref: main
       
+      - name: Create gh-pages branch if it doesn't exist
+        run: |
+          git show-ref --verify --quiet refs/heads/gh-pages || git checkout --orphan gh-pages
+
       - name: Move PDF to deployment directory
         run: |
           mkdir -p deployment_directory
