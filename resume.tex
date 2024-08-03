@@ -1,233 +1,198 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2024 Ubed Khan
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%-------------------------
+% Resume in Latex
+% Author: Ubed Khan
+% Based off of: https://github.com/sb2nov/resume
+% License: MIT
+%------------------------
 
-%----------------------------------------------------------------------------------------
-%	DOCUMENT DEFINITION
-%----------------------------------------------------------------------------------------
-
-% article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
-% ATS Compatibility
-% Ensure that generate pdf is machine readable/ATS parsable
-\input{glyphtounicode}
+\documentclass[a4paper,11pt]{article}
 \pdfgentounicode=1
 
-
-%----------------------------------------------------------------------------------------
-%	FONT
-%----------------------------------------------------------------------------------------
-
-% % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES
-%----------------------------------------------------------------------------------------
-\usepackage{url}
-\usepackage{parskip} 	
-
-%other packages for formatting
-\RequirePackage{color}
-\RequirePackage{graphicx}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[left=0.9cm,right=0.9cm,top=0.9cm,bottom=0.5cm]{geometry}
-
-%tabularx environment
-\usepackage{tabularx}
-
-%for lists within experience section
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
 \usepackage{enumitem}
-
-% centered version of 'X' col. type
-\newcolumntype{C}{>{\centering\arraybackslash}X} 
-
-%to prevent spillover of tabular into next pages
-\usepackage{supertabular}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
 \usepackage{tabularx}
-\newlength{\fullcollw}
-\setlength{\fullcollw}{0.47\textwidth}
+\input{glyphtounicode}
 
-%custom \section
-\usepackage{titlesec}				
-\usepackage{multicol}
-\usepackage{multirow}
 
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{8pt}{6pt}
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
 
-%Setup hyperref package, and colours for links
-\usepackage[unicode, draft=false]{hyperref}
-\definecolor{linkcolour}{rgb}{0,0.2,0.6}
-\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-% \addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
 
-%for social icons
-\usepackage{fontawesome5}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
-%debug page outer frames
-%\usepackage{showframe}
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.3in}
 
-%----------------------------------------------------------------------------------------
-%	BEGIN DOCUMENT
-%----------------------------------------------------------------------------------------
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \begin{document}
 
-% non-numbered pages
-\pagestyle{empty} 
-
-%----------------------------------------------------------------------------------------
-%	TITLE
-%----------------------------------------------------------------------------------------
-
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
-
-\begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Ubedurrehman Khan} \\[7.5pt]
-\href{https://github.com/ubednama}{\raisebox{-0.05\height}\faGithub\ ubednama} \ $|$ \ 
-\href{https://linkedin.com/in/ubed9}{\raisebox{-0.05\height}\faLinkedin\ ubed9} \ $|$ \ 
-\href{https://ubednama.netlify.app/}{\raisebox{-0.05\height}\faGlobe \ ubednama.netlify.app} \ $|$ \ 
-\href{mailto:kubedrn@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ kubedrn@gmail.com} \ $|$ \ 
-\href{tel:+918657567454}{\raisebox{-0.05\height}\faMobile \ +91 86*** *****}\\
-\end{tabularx}
-
-% ---------------------------------------------------------------------------------------
-% %Interests/ Keywords/ Summary
-% ---------------------------------------------------------------------------------------
-\noindent
-\hrulefill \\
-Computer Science graduate with prior experience in JavaScript, seeking a challenging role in a dynamic company. Proficient in leveraging programming expertise to drive organizational growth and contribute to innovative projects. Eager for opportunities that foster personal and professional development.
-
-%----------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
-\section{Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-\textbf{\normalsize{Languages:}} & \normalsize{JavaScript, Java, Python, C++, HTML/CSS} \\
-\textbf{\normalsize{Frameworks/Libs:}} & \normalsize{React.js, Node.js, Springboot, Redux, Wordpress, MVC} \\
-\textbf{\normalsize{Databases:}} & \normalsize{MySQL, PostgreSQL, MongoDB} \\
-\textbf{\normalsize{Technologies/Tools:}} & \normalsize{AWS, Docker, Git, Linux, VS Code} \\
-\end{tabularx}
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Ubedurrehman Khan} \\ \vspace{1pt}
+    \small \href{tel:+918657567454}{ \ +91 86575 67454} $|$ \href{mailto:kubedrn@gmail.com}{\underline{kubedrn@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/ubed9}{\underline{linkedin.com/in/ubed9}} $|$
+    \href{https://github.com/ubednama}{\underline{github.com/ubednama}} $|$
+    \href{https://ubednama.netlify.app/}{\underline{ubednama.netlify.app}}\\[4pt]
+    Mumbai, IN
+\end{center}
 
 
-%----------------------------------------------------------------------------------------
-% EXPERIENCE SECTIONS
-%----------------------------------------------------------------------------------------
-
-%Experience
-\section{Work Experience}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Full Stack Developer Intern} \textit{Kothari Tech} & \hfill \textit{April 2024 - May 2024} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
-        \item[-] Developed responsive and dynamic web applications at Kothari Tech using HTML, JavaScript React.js and Tailwind CSS, ensuring seamless user experiences for various devices and screen sizes.
-    \end{itemize}
-    \end{minipage}
-}
-\end{tabularx}
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Full Stack Developer Intern} \textit{ADM Education Society} & \hfill \textit{Oct 2023 - March 2024} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
-        \item[-] Developed responsive websites using a combination of technologies including React.js \& Tailwind CSS for various devices and screen sizes.
-        \item [-]Worked closely with design, backend, and QA teams to understand and fulfill customer requirements, ensuring high-quality deliverables
-    \end{itemize}
-    \end{minipage}
-}
-\end{tabularx}
-
-%Projects
-\section{Projects}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-    \textbf{Flight Ticket Management System} \textit{| Node.js, MySQL, AWS} & \hfill \href{https://github.com/ubednama/Flights-Service}{Github}  \\[3pt]
-    \multicolumn{2}{@{}X@{}}{Developed a robust web-based flight ticket management application, proficient in displaying, booking, and managing tickets in real-time. Engineered to sustain high traffic loads with reliability, ensuring uninterrupted service for a large user base.}  \\
-\end{tabularx}
-\vspace{-4pt}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-    \textbf{Project Management System} \textit{| Spring Boot, React.js, MySQL, Tailwind, Razorpay} & \hfill \href{https://github.com/ubednama/Project-Management-System}{GitHub} \\[3pt]
-    \multicolumn{2}{@{}X@{}}{Developed a full-stack project management system using React and Spring Boot, incorporating JWT for authentication and Razorpay for payment processing. Gained expertise in building interactive UIs, managing state with Redux, and creating RESTful APIs with secure data handling.}  \\
-\end{tabularx}
-\vspace{-4pt}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-    \textbf{YAMovieDB} \textit{| React.js} & \hfill \href{https://ya-movie-db.vercel.app/}{Link} \textbar{} \href{https://github.com/ubednama/YAMovieDB}{Github} \\[3pt]
-    \multicolumn{2}{@{}X@{}}{Developed interactive React app for exploring movies, trailers, and detailed descriptions, similar to IMDb.}  \\
-\end{tabularx}
-\vspace{-4pt}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-    \textbf{Real time Chat App} \textit{| Node.js React.js, MongoDB} & \hfill \href{https://chat-app-uwfk.onrender.com/}{Link} \textbar{} \href{https://github.com/ubednama/chat-app}{Github} \\[3pt]
-    \multicolumn{2}{@{}X@{}}{Real-time chat application built with React, Node.js, and Socket.io, featuring JWT authentication, MongoDB storage, and state management with React Context and Zustand.}  \\
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
+%-----------EDUCATION-----------
 \section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-\textbf{Bachelor Of Engineering} in Computer Science (\textbf{Mumbai University}) & \hfill \normalsize \textit{Aug 2019 - May 2023} \\
-\end{tabularx}
+  \begin{itemize}[leftmargin=0.15in, label={}]
+    \resumeSubheading
+      {Mumbai University}{Navi Mumbai, MH}
+      {Bachelor of Engineering in Computer Science}{Aug. 2019 - May 2023}
+  \end{itemize}
 
-%----------------------------------------------------------------------------------------
-%	Achievements
-%----------------------------------------------------------------------------------------
-\section{Achievements}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-\multicolumn{2}{@{}X@{}}{\textbf{Solved 100+ problems} on \href{https://leetcode.com/ubednama}{LeetCode} \& \href{https://www.naukri.com/code360/profile/ubednama}{CodingNinjas}.}
-\end{tabularx}
+%-----------PROGRAMMING SKILLS-----------
+\noindent\section*{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programming Languages}{: JavaScript, Java, Python, C++, SQL} \\
+     \textbf{Frameworks/Libraries}{: React.js, Node.js, Spring Boot, Kafka, RabbitMQ, RESTful API, gRPC, MVC, Jenkins} \\
+     \textbf{Developer Tools}{: AWS, Git, Docker, CI/CD, Kubernetes, Redis}
+    }}
+ \end{itemize}
 
-%----------------------------------------------------------------------------------------
-%	CourseWork
-%----------------------------------------------------------------------------------------
-\section{Coursework}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-\multicolumn{2}{@{}X@{}}{OOPs \textbar{} DSA \textbar{} ML \textbar{} OS \textbar{} Cloud Computing \textbar{} Database Management \textbar{} Big Data Analytics \textbar{} AI \textbar{} NLP}
-\end{tabularx}
+ \vspace{-7pt}
+
+%-----------EXPERIENCE-----------
+\section*{Experience}
+    \begin{itemize}[leftmargin=0.15in, label={}]
+        \resumeSubheading
+          {Head of Department Intern, Web Development}{Oct 2023 - Present}{ADM Education Society}{Gurugram}
+          \resumeItemListStart
+            \resumeItem{Promoted to HOD and guided a team of 20 interns in developing the Maa Foundation website, enhancing user engagement and functionality.}
+            \resumeItem{Introduced methodologies that increased productivity by 30\% and streamlined processes.}
+            \resumeItem{Contributed to the ADM Education and Renu Health websites, delivering tailored solutions for various project needs, which helped accelerate website launch by 20\% and improved load time by 30\%.}
+            \resumeItem{Oversaw deployment processes to ensure clean, scalable, and reliable software performance throughout the development lifecycle, resulting in a 50\% reduction in post-deployment issues.}
+          \resumeItemListEnd
+        
+        \resumeSubheading
+          {Full Stack Developer Intern}{Apr 2024 - May 2024}{Kothari Tech}{Mumbai}
+          \resumeItemListStart
+            \resumeItem{Led front-end development for Lofaz.in, an e-commerce platform, creating responsive user interfaces with React.js and CSS frameworks, which reduced page load time by 40\% and increased user retention by 20\%.}
+            \resumeItem{Collaborated with UI/UX designers to translate design mockups into interactive components, aligning with project requirements and enhancing user interaction.}
+          \resumeItemListEnd
+    \end{itemize}
 
 
+%-----------PROJECTS-----------
+\noindent\section*{Projects}
+    \begin{itemize}[leftmargin=0.15in, label={}]
+    \resumeProjectHeading
+        {\textbf{Expense Tracker} $|$ \emph{Java, Spring Boot, Kafka, MySQL}}{\href{https://github.com/ubednama/Expense-Tracker-Authservice}{\underline{GitHub}}}
+            \resumeItemListStart
+                \resumeItem{Built a Java-based scalable Expense Tracker with a microservices architecture using Spring Boot and Kafka, allowing users to track personal expenses in real-time.}
+                \resumeItem{Designed an API Gateway for rate limiting and access control, integrated with AuthService for JWT generation, improving security and managing up to 5,000 simultaneous user sessions.}
+                \resumeItem{Utilized ChatMistralAI’s LLM service for extracting transaction information from messages, automating data entry with 95\% accuracy and streamlining personal expense tracking.}
+                \resumeItem{Developed a React Native mobile app, hosted backend services on AWS using Docker, and integrated email verification and reminder services, resulting in a 30\% increase in user engagement and satisfaction.}
+            \resumeItemListEnd
+        
+    \resumeProjectHeading
+      {\textbf{Flight Ticket Management System} $|$ \emph{Node.js, MySQL, AWS}}{\href{https://github.com/ubednama/Flights-Service} {\underline{GitHub}}}
+      \resumeItemListStart
+        \resumeItem{Engineered a flight ticket management system using Microservices Architecture, RabbitMQ, Sequelize, Node.js, Express.js, \& MySQL, optimizing real-time ticket display, booking, and management for high traffic efficiency.}
+        \resumeItem{Designed a robust API Gateway system to handle over 10,000 incoming requests daily, enhancing system reliability and scalability by 50\%. Leveraged RabbitMQ for asynchronous service communication, improving system scalability and reducing coupling.}
+        \resumeItem{Configured user Authentication and Authorization using JWT.}
+      \resumeItemListEnd
+      
+  \resumeProjectHeading
+      {\textbf{Project Management System} $|$ \emph{Spring Boot, React.js, MySQL, Tailwind, Razorpay}}{\href{https://github.com/ubednama/Project-Management-System}{\underline{GitHub}}}
+      \resumeItemListStart
+        \resumeItem{Architected a comprehensive project management system with JWT authentication and robust project tracking features, enabling real-time task management and user collaboration for over 1000 users and projects.}
+        \resumeItem{Enabled secure and scalable payment processing with Razorpay integration for premium features and subscriptions, and devised OAuth for streamlined and secure user authentication, enhancing overall system security and user experience.}
+      \resumeItemListEnd
+\resumeProjectHeading
+    {\textbf{Real-Time Chat App} $|$ \emph{Node.js, React.js, Socket.IO, MongoDB}}{\hfill \href{https://chat-app-uwfk.onrender.com/}{\underline{Link}} \textbar{} \href{https://github.com/ubednama/chat-app}{\underline{GitHub}}}
+    \resumeItemListStart
+        \resumeItem{Developed and deployed a real-time chat application using the MERN stack with Socket.IO, achieving over 99\% uptime and handling message delivery with less than 100ms latency.}
+        \resumeItem{Configured JWT authentication for secure user sessions and optimized scalability, enhancing performance and reliability by 50\% under high-traffic conditions.}
+    \resumeItemListEnd
+    \end{itemize}
+
+%-------------------------------------------
 \vfill
 \center{\footnotesize Last updated: \today}
 
