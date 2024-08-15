@@ -1,0 +1,201 @@
+%-------------------------
+% Resume in Latex
+% Author: Ubed Khan
+% Based off of: https://github.com/sb2nov/resume
+% License: MIT
+%------------------------
+
+\documentclass[a4paper,11pt]{article}
+\pdfgentounicode=1
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.3in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Ubedurrehman Khan} \\ \vspace{1pt}
+    \small \href{tel:+9186575}{ \ +91 86575 *****} $|$ \href{mailto:kubedrn@gmail.com}{\underline{kubedrn@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/ubed9}{\underline{linkedin.com/in/ubed9}} $|$
+    \href{https://github.com/ubednama}{\underline{github.com/ubednama}} $|$
+    \href{https://ubednama.netlify.app/}{\underline{ubednama.netlify.app}}\\[4pt]
+    % Mumbai, IN
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \resumeSubheading
+        {Mumbai University}{Navi Mumbai, India}
+        {Bachelor of Engineering in Computer Science}{Aug. 2019 - May 2023}
+\end{itemize}
+
+%-----------PROGRAMMING SKILLS-----------
+\noindent\section*{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programming Languages}{: \textbf{JavaScript}, \textbf{Java}, Typescript, Python, \textbf{SQL}} \\
+     \textbf{Frameworks/Libraries}{: \textbf{React.js}, \textbf{Node.js}, \textbf{Spring Boot}, Kafka, RabbitMQ, gRPC, MVC} \\
+     \textbf{Developer Tools \& Databases}{: \textbf{Git}, \textbf{AWS}, Docker, CI/CD, Kubernetes, Redis, \textbf{MongoDB, PostgreSQL, MySQL}}\\
+     \textbf{Concepts}{: \textbf{Object-Oriented Programming, Data Structures,} Operating Systems, System Design}
+    }}
+ \end{itemize}
+
+%-----------EXPERIENCE-----------
+\section*{Experience}
+    \begin{itemize}[leftmargin=0.15in, label={}]
+    \vspace{3pt}
+        \resumeSubheading
+          {Team Lead (Web Development - Volunteer)}{May 2024 - present}{ADM Education Society}{Gurugram}
+          \resumeItemListStart
+            \resumeItem{\textbf{As Team Lead, led a team of 20 interns} to develop the {\href{https://maa-foundation.vercel.app/} {\underline{Maa Foundation website}}}, leading to improved user engagement and enhanced functionality.}
+            \resumeItem{\textbf{Introduced Agile and Scrum methodologies,} boosting team productivity and development processes, enhancing adaptability to changing requirements.}
+            \resumeItem{\textbf{Streamlined deployment processes} for scalable \& reliable performance, reducing post-deployment issues by 50\%.}
+          \resumeItemListEnd
+
+    \vspace{3pt}
+          \resumeSubheading
+          {Full Stack Developer Intern}{Oct. 2022 - March 2023}{ADM Education Society}{Gurugram}
+          \resumeItemListStart
+            \resumeItem{\textbf{Developed and optimized ADM Education Society and Renu Healthcare websites}.}
+            \resumeItem{\textbf{Assisted in the deployment process,} ensuring the websites were successfully launched and accessible to users.}
+          \resumeItemListEnd
+    \end{itemize}
+
+%-----------PROJECTS-----------
+\noindent\section*{Projects}
+    \begin{itemize}[leftmargin=0.15in, label={}]
+    \resumeProjectHeading
+        {\textbf{Expense Tracker} $|$ \emph{Java, Spring Boot, Python, LongChain Kafka, MySQL, AWS, Docker}}{\href{https://github.com/ubednama/Expense-Tracker-Authservice}{\underline{GitHub}}}
+            \resumeItemListStart
+                \resumeItem{Built a scalable Expense Tracker application using \textbf{Java and microservices architecture with Spring Boot and Kafka}, enabling real-time personal expense tracking.}
+                \resumeItem{\textbf{Designed an API Gateway} to manage and route traffic between microservices. Achieved centralized management for authentication, authorization, and rate limiting, improving response time.}
+                \resumeItem{\textbf{Utilized ChatMistralAI’s LLM service with Langchain} to extract transaction information from messages, automating data entry with \textbf{95\% accuracy} and streamlining personal expense tracking.}
+                \resumeItem{\textbf{Developed a React Native mobile app}, hosted backend services on AWS using Docker, and integrated email verification and reminder services.}
+            \resumeItemListEnd
+
+    \vspace{3pt}
+  \resumeProjectHeading
+      {\textbf{Project Management System} $|$ \emph{Spring Boot, React.js, MySQL, Tailwind, Razorpay}}{\hfill  \href{https://project-management-system-frontend-rho.vercel.app/}{\underline{Link}} \textbar{} \href{https://github.com/ubednama/Project-Management-System}{\underline{GitHub}}}
+      \resumeItemListStart
+        \resumeItem{Implemented a comprehensive Project Management System, managing real-time project tracking. \textbf{Integrated JWT authentication and Razorpay payment gateway}.}
+        \resumeItem{\textbf{Architected a responsive front-end interface} with React.js and Tailwind CSS, employing \textbf{Redux for state management}, which boosted application performance and reduced page load times.}
+        \resumeItem{Created back-end services, implementing \textbf{RESTful APIs and Spring Security}, achieving 95\% accuracy in API data transactions.}
+      \resumeItemListEnd
+
+    \vspace{3pt}
+    \resumeProjectHeading
+      {\textbf{Flight Ticket Management System} $|$ \emph{Node.js, MySQL, AWS}}{\href{https://github.com/ubednama/Flights-Service} {\underline{GitHub}}}
+      \resumeItemListStart
+        \resumeItem{Engineered a flight ticket management system using \textbf{Microservices Architecture, RabbitMQ, and Sequelize}.}
+        \resumeItem{Designed a robust API Gateway system to \textbf{handle over 10,000 incoming requests} daily, enhancing system reliability and scalability. Leveraged RabbitMQ for efficient, asynchronous service communication.}
+      \resumeItemListEnd
+
+    \vspace{3pt}
+    \resumeProjectHeading
+        {\textbf{Real-Time Chat App} $|$ \emph{Node, React, Socket.IO, MongoDB}}{\hfill \href{https://chat-app-uwfk.onrender.com/}{\underline{Link}} \textbar{} \href{https://github.com/ubednama/chat-app}{\underline{GitHub}}}
+        \resumeItemListStart
+            \resumeItem{Developed and deployed a real-time chat application using MERN stack and Socket.IO library, \textbf{achieving over 99\% uptime} and handling message delivery with \textbf{less than 100ms latency.}}
+        \resumeItemListEnd
+        \end{itemize}
+
+%-------------------------------------------
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
